@@ -249,8 +249,8 @@ private:
         {
             return RBTree<T>(Minus(c),
                 lft.left().paint(B),
-                lft.left().root(),
-                RBTree<T>(B, lft.left().right(), x, rgt));
+                lft.root(),
+                RBTree<T>(B, lft.right(), x, rgt));
         }
         else if (rgt.IsColor(R) && rgt.left().IsColor(R))
         {
