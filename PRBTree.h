@@ -1,6 +1,5 @@
 #pragma once
-#pragma once
-//#include"List.h"
+
 #include <cassert>
 #include <memory>
 
@@ -103,10 +102,6 @@ public:
         else
             return *this;
     }
-    //RBTree set(T x) {
-    //  // _root->_val = x;
-    //   
-    //}
     RBTree inserted(T x) const
     {
         RBTree t = ins(x);
@@ -155,23 +150,22 @@ private:
         if (isEmpty())
             return RBTree(R, RBTree(), x, RBTree());
         T y = root();
-        //爷值
         Color c = rootColor();
-        //爷颜色
-        if (c == B) //爷为黑
+
+        if (c == B)
         {
-            if (x < y) //子为左
+            if (x < y) 
                 return balance(left().ins(x), y, right());
-            else if (y < x) //子为右
+            else if (y < x)
                 return balance(left(), y, right().ins(x));
             else
                 return *this; // no duplicates
         }
-        else //爷为红
+        else
         {
-            if (x < y) //子为左
+            if (x < y)
                 return RBTree(c, left().ins(x), y, right());
-            else if (y < x) //子为右
+            else if (y < x)
                 return RBTree(c, left(), y, right().ins(x));
             else
                 return *this; // no duplicates
@@ -239,29 +233,6 @@ private:
             RBTree rt = !rgt.isEmpty() && rgt.root() == -1 ? RBTree() : RBTree(rgt);
             return RBTree<T>(c, lt, x, rt);
         }
-
-        /*if (!lft.isEmpty() && lft.root() == -1) {
-            if (rgt.isEmpty())
-                return RBTree<T>(Add(c), RBTree(), x, RBTree());
-            else if(rgt.IsColor(BB))
-                return RBTree<T>(Add(c), RBTree(), x, rgt.paint(Minus(rgt.color())));
-            else
-                return RBTree<T>(c, RBTree(), x, rgt);
-        }
-        else if (!rgt.isEmpty() && rgt.root() == -1) {
-            if (lft.isEmpty())
-                return RBTree<T>(Add(c), RBTree(), x, RBTree());
-            else if(lft.IsColor(BB))
-                return RBTree<T>(Add(c), lft.paint(Minus(lft.color())), x, RBTree());
-            else
-                return RBTree<T>(c, lft, x, RBTree());
-        }
-        else if (lft.IsColor(BB) || rgt.IsColor(BB)) {
-            return balance2(Add(c), lft.paint(Minus(lft.color())), x, rgt.paint(Minus(rgt.color())));
-        }
-        else {
-            return RBTree<T>(c, lft, x, rgt);
-        }*/
     }
 
     static RBTree balance2(Color c, RBTree const& lft, T x, RBTree const& rgt) {
@@ -407,15 +378,3 @@ RBTree<T> treeUnion(RBTree<T> const& a, RBTree<T> const& b)
         });
     return res;
 }
-
-//// Remove elements in set from a list
-//template<class T>
-//List<T> rem_from_list(List<T> const& lst, RBTree<T> const& set)
-//{
-//    List<T> res;
-//    lst.forEach([&res, &set](T const& v) {
-//        if (!set.member(v))
-//            res = res.pushed_front(v);
-//        });
-//    return res;
-//}
