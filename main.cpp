@@ -1,5 +1,3 @@
-//#include"RBTree.h"
-
 #include <stdlib.h>
 #include"PRBTree.h"
 #include <iostream>
@@ -18,9 +16,6 @@ void print(RBTree<T> const& t)
 }
 
 template<class T>
-void preorder(RBTree<T> const& t);
-
-template<class T>
 void preorder(RBTree<T> const& t)
 {
     if (t.isEmpty()) {
@@ -28,7 +23,6 @@ void preorder(RBTree<T> const& t)
     }
 
     int c = t.color_();
-   // std::cout << c << std::endl;
     if (c== 0)
         std::cout << "Red " << t.root() << std::endl;
     else
@@ -88,17 +82,6 @@ void testInit2() {
     print(t3);
     preorder(t3);
 
-    RBTree<int> t3_ = t3.find(5);
-    // t3_.set(50);
-
-    RBTree<int> t2_ = t2.find(5);
-    RBTree<int> t2__ = t2.find(50);
-
-    /* List<int> addi3 = { 7 };
-     RBTree<int> t4(t3);
-     t4 = rem_from_list(addi3, t4);
-     print(t3);
-     preorder(t3);*/
 }
 
 void testInit3() {
@@ -129,28 +112,6 @@ void testInit3() {
 }
 
 int main() {
-
-    /* testInit();
-     std::string init = "a red black tree walks into a bar "
-         "has johnny walker on the rocks "
-         "and quickly rebalances itself."
-         "A RED BLACK TREE WALKS INTO A BAR "
-         "HAS JOHNNY WALKER ON THE ROCKS "
-         "AND QUICKLY REBALANCES ITSELF.";
-     auto t = inserted(RBTree<char>(), init.begin(), init.end());
-     print(t);
-     t.assert1();
-     std::cout << "Black depth: " << t.countB() << std::endl;
-     std::cout << "Member z: " << t.member('z') << std::endl;
-     std::for_each(init.begin(), init.end(), [t](char c)
-         {
-             if (!t.member(c))
-                 std::cout << "Error: " << c << " not found\n";
-         });*/
-
     testInit3();
-
-    system("pause");
-
     return 0;
 }
